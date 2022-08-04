@@ -2,7 +2,8 @@
  
 namespace App\Console\Commands;
  
-use App\Http\Controllers\YahooOAuth2; 
+use App\Http\Controllers\YahooController; 
+use App\Models\Authentication;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
  
@@ -14,6 +15,7 @@ class Test extends Command
 
     public function handle()
     {
-        print('test');
+        $y = new YahooController();
+        print_r($y->storeAccessTokens());
     }
 }
