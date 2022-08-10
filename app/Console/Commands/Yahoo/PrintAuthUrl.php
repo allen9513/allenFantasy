@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Yahoo;
 
-use App\Http\Controllers\YahooController; 
+use App\Http\Controllers\YahooClient; 
 use Illuminate\Console\Command;
 
 class PrintAuthUrl extends Command
@@ -12,7 +12,7 @@ class PrintAuthUrl extends Command
 
     public function handle()
     {
-        $yahoo = new YahooController();
-        print($yahoo->getAuthorizationURL());
+        $client = new YahooClient();
+        print($client->getAuthURL());
     }
 }

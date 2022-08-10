@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Yahoo;
 
-use App\Http\Controllers\YahooController; 
+use App\Http\Controllers\YahooClient; 
 use Illuminate\Console\Command;
 
 class PrintAccessToken extends Command
@@ -12,7 +12,7 @@ class PrintAccessToken extends Command
 
     public function handle()
     {
-        $yahoo = new YahooController(); 
-        print_r($yahoo->getAccessToken($this->argument('authCode')));
+        $client = new YahooClient(); 
+        $client->setAuth($this->argument('authCode'));
     }
 }
