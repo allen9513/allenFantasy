@@ -7,13 +7,14 @@ use App\Models\Authentication;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Facades\Http;
 
 /*
 Big thanks to saurabhsahni
 https://github.com/saurabhsahni/php-yahoo-oauth2
 */
 
-class YahooClient { 
+class AuthorizationController { 
 
     public function getAuthURL() : string 
     {
@@ -103,6 +104,23 @@ class YahooClient {
         }
 
         $this->storeAuth(json_decode($response->getBody()->getContents())); 
+    }
+
+    protected function getRequest($url)
+    {
+        $auth = $this->getAuth();
+        $baseUrl = 'https://fantasysports.yahooapis.com/fantasy/v2/';
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $auth->accessToken,
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ])->get($baseUrl . 'users;use_login=1/games;game_keys/?format=json');
+
+        if ($response->failed()) {
+            dd(json_decode($response->getBody()->getContents()));
+        }
+
+        return json_decode($response->getBody()->getContents());
     }
 }
 
