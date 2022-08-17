@@ -114,9 +114,10 @@ class AuthorizationController {
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $auth->accessToken,
             'Content-Type' => 'application/x-www-form-urlencoded'
-        ])->get($baseUrl . 'users;use_login=1/games;game_keys/?format=json');
+        ])->get($baseUrl . $url);
 
         if ($response->failed()) {
+            dd($response);
             dd(json_decode($response->getBody()->getContents()));
         }
 

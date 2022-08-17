@@ -8,7 +8,7 @@ class FantasyGamesController extends AuthorizationController {
 
     public function storeGames()
     {
-        $games = $this->getGames();
+        $games = $this->getGamesFromYahoo();
 
         foreach ($games as $game) {
             FantasyGames::updateOrCreate(
@@ -38,7 +38,7 @@ class FantasyGamesController extends AuthorizationController {
         }
     }
 
-    private function getGames() 
+    private function getGamesFromYahoo() 
     {
         $url = 'users;use_login=1/games;game_keys/?format=json';
         $gamesRequest = $this->getRequest($url);
