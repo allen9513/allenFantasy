@@ -6,14 +6,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/leagueConfig">League Config</a></li>
-          </ul>
-        </li>
+        @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/admin/leagueConfig">League Config</a></li>
+            </ul>
+          </li>
+        @endauth
       </ul>
       <button class="btn btn-outline-dark"data-bs-toggle="modal" data-bs-target="#loginModal" >
         <svg width="24" height="24" fill="#f8f9fa" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -32,15 +34,9 @@
   </div>
 @endif
 
-@if(session()->has('loginSuccessful'))
+@if(session()->has('successMessage'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    login sucessfull
-  </div>
-@endif
-
-@if(session()->has('logoutSuccessful'))
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    logout sucessfull
+    {{ session()->get('successMessage') }}
   </div>
 @endif
 

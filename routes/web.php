@@ -29,6 +29,22 @@ Route::get(
 )->middleware(EnsureUserIsAdmin::class);
 
 Route::post(
+    'admin/createLeague',
+     [
+        LeagueController::class, 
+        'createLeague'
+     ]
+)->middleware(EnsureUserIsAdmin::class);
+
+Route::post(
+    'admin/deleteLeague',
+     [
+        LeagueController::class, 
+        'deleteLeague'
+     ]
+)->middleware(EnsureUserIsAdmin::class);
+
+Route::post(
     '/authenticate',
     [
         UserController::class, 

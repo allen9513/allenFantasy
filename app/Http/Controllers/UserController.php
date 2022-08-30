@@ -31,7 +31,7 @@ class UserController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->back()->with('loginSuccessful', 1);
+            return redirect()->back()->with('successMessage', 'Login Successful');
         }
  
         return back()->withErrors([
@@ -45,6 +45,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
  
-        return redirect('/')->with('logoutSuccessful', 1);
+        return redirect('/')->with('successMessage', 'Logout Successful');
     }
 }
