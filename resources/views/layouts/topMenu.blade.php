@@ -54,7 +54,7 @@
             Log In
           @endguest
           @auth
-            
+            Hello {{Auth::user()->userName}}
           @endauth
         </h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

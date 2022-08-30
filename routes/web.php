@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\LeagueController; 
-use App\Http\Controllers\UserController; 
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::get(
         LeagueController::class, 
         'leagueConfig'
      ]
-);
+)->middleware(EnsureUserIsAdmin::class);
 
 Route::post(
     '/authenticate',
