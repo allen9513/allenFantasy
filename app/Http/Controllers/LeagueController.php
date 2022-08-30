@@ -31,7 +31,7 @@ class LeagueController extends FantasyGamesController
         }
 
         return view(
-            'leagues.leagueConfig', 
+            'admin.leagueConfig', 
             [
                 'fantasyGames' => $fantasyGames,
                 'leagues' => $leagues,

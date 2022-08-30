@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LeagueController; 
+use App\Http\Controllers\UserController; 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,25 @@ Route::get('/', function () {
 });
 
 Route::get(
-    '/leagueConfig',
+    'admin/leagueConfig',
      [
         LeagueController::class, 
         'leagueConfig'
      ]
+);
+
+Route::post(
+    '/authenticate',
+    [
+        UserController::class, 
+        'authenticate',
+    ]
+);
+
+Route::post(
+    '/logout',
+    [
+        UserController::class, 
+        'logout',
+    ]
 );
