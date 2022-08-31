@@ -59,3 +59,35 @@ Route::post(
         'logout',
     ]
 );
+
+Route::get(
+    'admin/userManagement',
+     [
+        UserController::class, 
+        'userManagement'
+     ]
+)->middleware(EnsureUserIsAdmin::class);
+
+Route::post(
+    'admin/addUser',
+    [
+        UserController::class, 
+        'addUser',
+    ]
+)->middleware(EnsureUserIsAdmin::class);;
+
+Route::post(
+    'admin/editUser',
+    [
+        UserController::class, 
+        'editUser',
+    ]
+)->middleware(EnsureUserIsAdmin::class);;
+
+Route::post(
+    'admin/deleteUser',
+    [
+        UserController::class, 
+        'deleteUser',
+    ]
+)->middleware(EnsureUserIsAdmin::class);;

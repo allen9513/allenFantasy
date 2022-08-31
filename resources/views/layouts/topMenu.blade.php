@@ -13,7 +13,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/admin/leagueConfig">League Config</a></li>
+              <li><a class="dropdown-item" href="/admin/userManagement">User Management</a></li>
             </ul>
+            
           </li>
         @endauth
       </ul>

@@ -9,41 +9,22 @@ use Illuminate\Http\Request;
 
 class LeagueController extends FantasyGamesController
 {
-    public function test() 
-    {
-        return 'asdf';
-    }
-
-    public function getLeaguesFromYahoo() 
-    {
-        print('asdf');
-        /* $url = 'league/414.l.5623/?format=json';
-        $leagueRequest = $this->getRequest($url);
-        dd($leagueRequest); */
-    }
-
-    public function leagueConfig($message=[])
+    public function leagueConfig()
     {
         $fantasyGames = FantasyGames::get();
         $leagues = Leagues::get();
-
-        foreach ($fantasyGames as $fantasyGame) {
-
-        }
 
         return view(
             'admin.leagueConfig', 
             [
                 'fantasyGames' => $fantasyGames,
                 'leagues' => $leagues,
-                'message' => $message,
             ]
         );
     }
 
     public function createLeague(Request $request)
     {
-
         try {
             Leagues::create([
                 'leagueId' => $request->leagueId,

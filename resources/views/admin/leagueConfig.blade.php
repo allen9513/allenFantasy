@@ -43,56 +43,50 @@
         </div>
 
         <div class="modal-body">
-          <table class="table table-hover">
-            <thead>
-            </thead>
-            <tbody id="leaguesTable">
-              @foreach ($leagues as $league)
-                @if ($league->gameKey == $fantasyGame->gameKey)
-                  <form action="/admin/deleteLeague" method="POST">
-                    @csrf
-                    <div class="row">
-                      <input type="hidden" name="gameKey" value="{{ $league->gameKey }}">
-                      <div class="col">
-                        <input name='leagueNickname' type="text" class="form-control" value="{{ $league->nickname }}" readonly>
-                      </div>
-                      <div class="col">
-                        <input name='leagueId' type="text" class="form-control" value="{{ $league->leagueId }}" readonly>
-                      </div>
-                      <div class="col">
-                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="28" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                          </svg>
-                        </button>  
-                      </div>
-                    </div>
-                  </form>
-                  <br>
-                @endif
-              @endForeach
-
-              <form action="/admin/createLeague" method="POST">
+          @foreach ($leagues as $league)
+            @if ($league->gameKey == $fantasyGame->gameKey)
+              <form action="/admin/deleteLeague" method="POST">
                 @csrf
                 <div class="row">
-                  <input type="hidden" name="gameKey" value="{{ $fantasyGame->gameKey }}">
+                  <input type="hidden" name="gameKey" value="{{ $league->gameKey }}">
                   <div class="col">
-                    <input name='leagueNickname' type="text" class="form-control" placeholder="Nickname">
+                    <input name='leagueNickname' type="text" class="form-control" value="{{ $league->nickname }}" readonly>
                   </div>
                   <div class="col">
-                    <input name='leagueId' type="text" class="form-control" placeholder="League ID">
+                    <input name='leagueId' type="text" class="form-control" value="{{ $league->leagueId }}" readonly>
                   </div>
                   <div class="col">
-                    <button type="submit" class="btn btn-outline-success btn-sm">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" width="56" height="28" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                       </svg>
-                    </button>
+                    </button>  
                   </div>
                 </div>
               </form>
-            </tbody>
-          </table>
+              <br>
+            @endif
+          @endForeach
+
+          <form action="/admin/createLeague" method="POST">
+            @csrf
+            <div class="row">
+              <input type="hidden" name="gameKey" value="{{ $fantasyGame->gameKey }}">
+              <div class="col">
+                <input name='leagueNickname' type="text" class="form-control" placeholder="Nickname">
+              </div>
+              <div class="col">
+                <input name='leagueId' type="text" class="form-control" placeholder="League ID">
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-outline-success btn-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="56" height="28" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
