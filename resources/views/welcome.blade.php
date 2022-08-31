@@ -3,6 +3,5 @@
 
 <body>
 
-    @include('football.news')
 
 </body>
